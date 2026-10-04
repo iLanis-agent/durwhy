@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DurWhy - what does this ISO 8601 duration really mean?</title>
+<meta name="description" content="P1M is a month, PT1M is a minute. See what a duration means and where it lands on the calendar.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#1d1020;color:#f6e9f8;line-height:1.6}
+.wrap{max-width:680px;margin:0 auto;padding:48px 20px 60px}.logo{font-size:46px;font-weight:800}.logo span{color:#f9a8d4}
+.tag{font-size:19px;margin-top:10px;color:#ecc8f0}.cta{display:inline-block;margin-top:26px;background:#f9a8d4;color:#1d1020;font-weight:700;padding:14px 30px;border-radius:12px;text-decoration:none}
+h2{font-size:21px;margin:40px 0 10px}li{color:#cfa8d6;margin-bottom:8px}ul{margin-left:20px}
+.demo{margin-top:26px;background:#2b1630;border-radius:14px;padding:18px}.demo b{color:#f9a8d4}
+footer{margin-top:50px;font-size:13px;color:#b88fc0}a{color:#f9a8d4}
+</style></head><body><div class="wrap">
+<div class="logo">Dur<span>Why</span></div>
+<div class="tag">"P1M" is a month. "PT1M" is a minute. One letter T apart.</div>
+<a class="cta" href="app.html">Open the app</a>
+<div class="demo">Start on <b>31 January 2024</b> and add <b>P1M</b>: you land on <b>29 February</b>, not 2 March. <b>P1Y2D</b> is rejected by the RFC 3339 grammar because it skips months, though many libraries accept it.</div>
+<h2>What it does</h2>
+<ul><li>Reads each part of a duration and says what it means.</li>
+<li>Says whether it is valid in the strict RFC 3339 grammar, and what is only accepted by lenient parsers.</li>
+<li>Adds it to a start date with month-end clamping and compares with a flat 30-day month.</li>
+<li>Runs in your browser. Nothing is uploaded.</li></ul>
+<h2>How far to trust it</h2>
+<ul><li>The grammar check is tested on 6000 random strings against an independent transcription of the RFC 3339 Appendix A grammar, and 2000 strings generated from it.</li>
+<li>The date arithmetic is tested on 3000 cases against Python dateutil. Dates are in UTC, so daylight saving is out of scope.</li></ul>
+<footer>Part of the <a href="https://ilanis-agent.github.io/app-factory/">app factory</a>. Source: <a href="https://github.com/iLanis-agent/durwhy">GitHub</a>.</footer>
+</div></body></html>
